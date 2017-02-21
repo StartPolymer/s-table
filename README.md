@@ -2,7 +2,11 @@
 
 # \<s-table\>
 
-Responsive HTML table extended by Polymer and Material Design.
+Responsive HTML table extended with Polymer and Material Design.
+
+- `<s-table>` is an HTML `<table>` element that has responsive width and fixed first column.
+- `<s-table-lite>` is an HTML `<table>` element that don't implement Material Design.
+- `<s-tbody>` and `<s-tr>` are HTML elements extended with `<iron-selector>`.
 
 ## Demo
 
