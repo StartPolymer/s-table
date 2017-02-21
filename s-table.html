@@ -1,0 +1,112 @@
+<!--
+@license
+Copyright (c) 2017 The StartPolymer Project Authors. All rights reserved.
+This code may only be used under the MIT License found at https://github.com/StartPolymer/license
+The complete set of authors may be found at https://github.com/StartPolymer/authors
+The complete set of contributors may be found at https://github.com/StartPolymer/contributors
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/color.html">
+<link rel="import" href="../paper-styles/default-theme.html">
+
+<!--
+`s-table`
+Responsive HTML table extended by Polymer and Material Design.
+
+@demo demo/s-table.html
+-->
+
+<dom-module id="s-table">
+<template>
+
+<style>
+
+:host {
+  display: block;
+  color: inherit;
+  overflow-x: auto;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+:host::-webkit-scrollbar {
+  height: var(--s-table-scrollbar-height, 8px);
+}
+
+:host::-webkit-scrollbar-track {
+  border-radius: var(--s-table-scrollbar-border-radius, 2px);
+}
+
+:host::-webkit-scrollbar-thumb {
+  border-radius: var(--s-table-scrollbar-border-radius, 2px);
+  background-color: var(--s-table-scrollbar-color, #C1C1C1); /* Chrome scrollbar color */
+}
+
+:host([fixed-column]) {
+  margin-left: var(--s-table-fixed-column-width, 192px);
+}
+
+:host([fixed-column]) #table ::slotted(tbody) tr td:nth-of-type(1),
+:host([fixed-column]) #table ::slotted(tfoot) tr td:nth-of-type(1),
+:host([fixed-column]) #table ::slotted(thead) tr th:nth-of-type(1) {
+  @apply(--layout);
+  @apply(--layout-center-center);
+  position: absolute;
+  left: 0;
+  width: var(--s-table-fixed-column-width, 192px);
+}
+
+#table {
+  display: table;
+  width: 100%;
+}
+
+#table ::slotted(tbody) td,
+#table ::slotted(tfoot) td {
+  box-sizing: border-box;
+  height: var(--s-table-row-height, 48px);
+  padding: 0 var(--s-table-gutter, 24px);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--s-table-divider-color, var(--divider-color));
+}
+
+#table ::slotted(thead) th {
+  box-sizing: border-box;
+  height: var(--s-table-head-row-height, 56px);
+  padding: 0 var(--s-table-gutter, 24px);
+  white-space: nowrap;
+  color: var(--secondary-text-color);
+  border-bottom: 1px solid var(--s-table-divider-color, var(--divider-color));
+  font-size: 12px;
+  font-weight: normal;
+}
+
+#table ::slotted(tbody) tr:hover td {
+  background-color: var(--paper-grey-200);
+}
+
+#table ::slotted(tbody) tr.iron-selected td {
+  background-color: var(--paper-grey-100);
+}
+
+</style>
+
+<div id="table">
+  <slot></slot>
+</div>
+
+</template>
+<script>
+
+Polymer({
+
+  is: 's-table',
+
+  extends: 'table'
+
+});
+
+</script>
+</dom-module>
