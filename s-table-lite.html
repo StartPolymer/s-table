@@ -22,33 +22,38 @@ Responsive HTML table extended by Polymer.
 
 :host {
   display: block;
-  overflow-x: auto;
+  position: relative;
   border-spacing: 0;
 }
 
-:host::-webkit-scrollbar {
-  height: var(--s-table-scrollbar-height, 8px);
-}
-
-:host::-webkit-scrollbar-track {
-  border-radius: var(--s-table-scrollbar-border-radius, 2px);
-}
-
-:host::-webkit-scrollbar-thumb {
-  border-radius: var(--s-table-scrollbar-border-radius, 2px);
-  background-color: var(--s-table-scrollbar-color, #C1C1C1); /* Chrome scrollbar color */
-}
-
-:host([fixed-column]) {
+:host([fixed-column]) #container {
   margin-left: var(--s-table-fixed-column-width, 192px);
 }
 
 :host([fixed-column]) #table ::slotted(tbody) tr td:nth-of-type(1),
 :host([fixed-column]) #table ::slotted(tfoot) tr td:nth-of-type(1),
 :host([fixed-column]) #table ::slotted(thead) tr th:nth-of-type(1) {
+  display: block;
   position: absolute;
   left: 0;
   width: var(--s-table-fixed-column-width, 192px);
+}
+
+#container {
+  overflow-x: auto;
+}
+
+#container::-webkit-scrollbar {
+  height: var(--s-table-scrollbar-height, 8px);
+}
+
+#container::-webkit-scrollbar-track {
+  border-radius: var(--s-table-scrollbar-border-radius, 2px);
+}
+
+#container::-webkit-scrollbar-thumb {
+  border-radius: var(--s-table-scrollbar-border-radius, 2px);
+  background-color: var(--s-table-scrollbar-color, #C1C1C1); /* Chrome scrollbar color */
 }
 
 #table {
@@ -58,8 +63,10 @@ Responsive HTML table extended by Polymer.
 
 </style>
 
-<div id="table">
-  <slot></slot>
+<div id="container">
+  <div id="table">
+    <slot></slot>
+  </div>
 </div>
 
 </template>
