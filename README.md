@@ -39,6 +39,9 @@ Responsive HTML table extended with Polymer and Material Design.
     background-color: rgba(255, 0, 255, 0.2);
   }
   tr.iron-selected td {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  tr:hover td {
     background-color: rgba(0, 0, 0, 0.2);
   }
   tr td.iron-selected:not(:nth-of-type(1)) {
